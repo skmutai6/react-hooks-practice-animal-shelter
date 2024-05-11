@@ -1,24 +1,26 @@
 import React from "react";
 
-function Pet() {
+function Pet(props) {
+  const { pet, handleAdopt } = props;
+
   return (
     <div className="card" data-testid="pet">
       <div className="content">
         <span className="header">
-          {/*'♀' OR '♂' */}
-          PET NAME
+          Name: {pet.name}
         </span>
+        Gender: {pet.gender}
         <div className="meta">
-          <span className="date">PET TYPE</span>
+          <span className="date">PET TYPE: {pet.type}</span>
         </div>
         <div className="description">
-          <p>Age: PET AGE</p>
-          <p>Weight: PET WEIGHT</p>
+          <p>Age: {pet.age}</p>
+          <p>Weight:{pet.weight}</p>
         </div>
       </div>
       <div className="extra content">
-        <button className="ui disabled button">Already adopted</button>
-        <button className="ui primary button">Adopt pet</button>
+        <button className="ui disabled button"> Already adopted </button>
+        <button className="ui primary button" onClick={(_event) => { handleAdopt(pet.id)}}> Adopt pet </button>
       </div>
     </div>
   );
